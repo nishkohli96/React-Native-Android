@@ -6,8 +6,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Home from '@screens/Home';
 import Profile from '@screens/Profile';
-import Comp from '@components/Comp';
-import { AppThemeContext, ThemeContext } from '@context/ThemeContext';
+import Updates from '@screens/Updates';
+import { ThemeContext } from '@context/ThemeContext';
 import { CommonStyles } from '@themes/CommonStyles';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -25,7 +25,6 @@ const Index = () => {
 
     return (
         <NavigationContainer>
-            {/* <AppThemeContext> */}
             <Tab.Navigator
                 initialRouteName="Home"
                 barStyle={styles.barStyles}
@@ -49,7 +48,7 @@ const Index = () => {
 
                 <Tab.Screen
                     name="Comp"
-                    component={Comp}
+                    component={Updates}
                     options={{
                         tabBarLabel: 'Updates',
                         tabBarIcon: () => (
@@ -77,7 +76,6 @@ const Index = () => {
                     }}
                 />
             </Tab.Navigator>
-            {/* </AppThemeContext> */}
         </NavigationContainer>
     );
 };

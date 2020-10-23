@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { Pressable, StatusBar, StyleSheet } from 'react-native';
+import { Pressable, StatusBar, View, StyleSheet } from 'react-native';
 import {
     ThemedContainer,
     ThemedText,
     ThemedSubContainer,
-    ThemedView,
 } from '@styledComps/ThemedComps';
 import { ThemeContext } from '@context/ThemeContext';
 
@@ -26,21 +25,15 @@ const Home = () => {
                 </ThemedText>
 
                 <Pressable
-                    onPress={() => setPresText('normal press') }
-                    style={({ pressed }) => [
-                        {
-                            backgroundColor: pressed
-                                ? 'rgb(210, 230, 255)'
-                                : 'silver',
-                        },
-                        styles.wrapperCustom,
-                    ]}
+                    onPressIn={() => setPresText('normal press') }
+                    onPressOut={() => setPresText('Press Me') }
+                    onLongPress = {() => setPresText('On Long Press...')}
                 >
-                    {({ pressed }) => (
+                    <View style={styles.pressView}>
                         <ThemedText style={styles.text}>
-                            {pressed ? presText : 'Press Me'}
+                            {presText}
                         </ThemedText>
-                    )}
+                    </View>
                 </Pressable>
                 
             </ThemedSubContainer>
@@ -56,6 +49,11 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'red'
+    },
+    pressView: {
+        borderColor: 'grey',
+        padding: 10,
+        backgroundColor: 'silver'
     }
 });
 

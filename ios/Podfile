@@ -10,6 +10,7 @@ target 'rnpractice' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+
   target 'rnpracticeTests' do
     inherit! :complete
     # Pods for testing
