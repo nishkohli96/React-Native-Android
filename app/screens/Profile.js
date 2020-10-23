@@ -11,13 +11,11 @@ import { CommonStyles } from '@themes/CommonStyles';
 import { ThemeContext } from '@context/ThemeContext';
 
 const Profile = () => {
-
     const { Dark, changeTheme } = React.useContext(ThemeContext);
     const toggleTheme = () => changeTheme();
 
     return (
         <ThemedContainer>
-      
             <ThemedView style={styles.itemView}>
                 <ThemedView style={styles.iconView}>
                     <Icon
@@ -27,9 +25,7 @@ const Profile = () => {
                     />
                 </ThemedView>
                 <ThemedView style={styles.itemText}>
-                    <ThemedText style={styles.text}>
-                        Dark Theme
-                    </ThemedText>
+                    <ThemedText style={styles.text}>Dark Theme</ThemedText>
                 </ThemedView>
                 <ThemedView style={styles.itemOption}>
                     <Switch
@@ -41,11 +37,9 @@ const Profile = () => {
                     />
                 </ThemedView>
             </ThemedView>
-
         </ThemedContainer>
     );
 };
-
 
 const styles = StyleSheet.create({
     itemView: {

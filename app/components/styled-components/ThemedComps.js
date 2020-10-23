@@ -21,6 +21,7 @@ export const ThemedSubContainer = styled.View`
     backgroundColor: ${(props) => props.theme.colors.background};
     display: flex;
     flex: 1;
+    paddingTop: ${CommonStyles.container.paddingTop};
     paddingLeft: ${CommonStyles.container.paddingLeft};
     paddingRight: ${CommonStyles.container.paddingRight};
     flexDirection: column;

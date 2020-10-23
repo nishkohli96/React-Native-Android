@@ -27,20 +27,20 @@ const Index = () => {
         <NavigationContainer>
             {/* <AppThemeContext> */}
             <Tab.Navigator
-                initialRouteName='Home'
+                initialRouteName="Home"
                 barStyle={styles.barStyles}
                 shifting={false}
-                backBehavior='order'
+                backBehavior="order"
             >
                 <Tab.Screen
-                    name='Home'
+                    name="Home"
                     component={Home}
                     options={{
                         tabBarLabel: 'Home',
                         tabBarIcon: () => (
                             <Icon
-                                name='home'
-                                color='#3156c4'
+                                name="home"
+                                color="#3156c4"
                                 size={CommonStyles.icons.tabIcons}
                             />
                         ),
@@ -48,14 +48,14 @@ const Index = () => {
                 />
 
                 <Tab.Screen
-                    name='Comp'
+                    name="Comp"
                     component={Comp}
                     options={{
                         tabBarLabel: 'Updates',
                         tabBarIcon: () => (
                             <Icon
-                                name='bell'
-                                color='#32a84e'
+                                name="bell"
+                                color="#32a84e"
                                 size={CommonStyles.icons.tabIcons}
                             />
                         ),
@@ -63,14 +63,14 @@ const Index = () => {
                 />
 
                 <Tab.Screen
-                    name='Profile'
+                    name="Profile"
                     component={Profile}
                     options={{
                         tabBarLabel: 'Profile',
                         tabBarIcon: () => (
                             <Icon
-                                name='account'
-                                color='#c43140'
+                                name="account"
+                                color="#c43140"
                                 size={CommonStyles.icons.tabIcons}
                             />
                         ),

@@ -3,7 +3,7 @@ export const CommonStyles = {
     container: {
         paddingLeft: '30px',
         paddingRight: '30px',
-        paddingTop: '30px',
+        paddingTop: '20px',
     },
     headerComp: {
         height: 65,
