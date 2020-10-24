@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -13,7 +13,6 @@ import { CommonStyles } from '@themes/CommonStyles';
 const Tab = createMaterialBottomTabNavigator();
 
 const Index = () => {
-
     const { Theme } = useContext(ThemeContext);
     const styles = StyleSheet.create({
         barStyles: {

@@ -9,12 +9,15 @@ app/components/styled-components/ThemedComps.js
 .buckconfig
 .flowconfig
 .eslintrc.js
+.eslintrc.json
+.prettierrc
 .gitattributes
 .gitignore
 .prettierignore
 .prettierrc.js
 .watchmanconfig
 .babelrc
+.env
 
 app.json
 babel.config.js
@@ -23,3 +26,6 @@ metro.config.js
 package.json
 package-lock.json
 yarn.lock
+yarn-error.log
+
+README.md
