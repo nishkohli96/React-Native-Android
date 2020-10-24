@@ -8,7 +8,7 @@ import {
     ThemedSubContainer,
 } from '@styledComps/ThemedComps';
 import PermsList from '@screens/PermsList';
-import Contacts from '@screens/Contacts';
+import ContactsList from '@screens/ContactsList';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +16,7 @@ const Updates = () => {
     return (
         <Stack.Navigator initialRouteName="PermsList">
             <Stack.Screen name="PermsList" component={PermsList} />
-            <Stack.Screen name="Contacts" component={Contacts} />
+            <Stack.Screen name="ContactsList" component={ContactsList} />
         </Stack.Navigator>
     );
 };

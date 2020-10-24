@@ -26,7 +26,7 @@ const PermsList = () => {
                         raised
                         primary
                         text="Contacts"
-                        onPress={() => navigation.navigate('Contacts')}
+                        onPress={() => navigation.navigate('ContactsList')}
                     />
                 </ThemedView>
             </ThemedSubContainer>

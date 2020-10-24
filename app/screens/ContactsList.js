@@ -1,13 +1,18 @@
 import React from 'react';
-import { PermissionsAndroid } from 'react-native';
+import { PermissionsAndroid, Platform } from 'react-native';
+import Contacts from 'react-native-contacts';
 
 import {
     ThemedContainer,
     ThemedText,
     ThemedSubContainer,
 } from '@styledComps/ThemedComps';
+import ContactItem from '@components/ContactItem';
 
-const Contacts = () => {
+const ContactsList = () => {
+
+    const [contacts, setContacts] = React.useState(null);
+
     React.useEffect(() => {
         const ReqPerms = async () => {
             try {
@@ -21,10 +26,15 @@ const Contacts = () => {
                 //     PermissionsAndroid.PERMISSIONS.READ_CALL_LOG,
                 //     PermissionsAndroid.PERMISSIONS.RECEIVE_SMS
                 // );
-                const granted = await PermissionsAndroid.request(
-                    PermissionsAndroid.PERMISSIONS.READ_CONTACTS
-                );
-                console.log('perms grantec ', granted);
+                if(Platform.OS === 'android') {
+                    await PermissionsAndroid.request(
+                        PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+                    );
+                }
+                const res = await Contacts.getAll();
+                console.log(res[0])
+                setContacts(res)
+
             } catch (err) {
                 console.warn(err);
             }
@@ -32,13 +42,23 @@ const Contacts = () => {
         ReqPerms();
     }, []);
 
+    if(!contacts){
+        return <></>;
+    }
+
     return (
         <ThemedContainer>
             <ThemedSubContainer>
                 <ThemedText>Get all your contacts</ThemedText>
             </ThemedSubContainer>
+            {
+                contacts.map(contact => 
+                    <ContactItem key={contact.recordID}
+                    item={contact} />
+                )
+            }
         </ThemedContainer>
     );
 };
 
-export default Contacts;
+export default ContactsList;
