@@ -12,7 +12,6 @@ const Updates = () => {
         <ThemedContainer>
             <ThemedSubContainer>
                 <ThemedText>
-                    {' '}
                     The Text below has been fetched from .env file
                 </ThemedText>
                 <ThemedText> {Config.SOME_TEXT}</ThemedText>
