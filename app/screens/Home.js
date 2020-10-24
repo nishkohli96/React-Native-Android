@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Pressable, StatusBar, View, StyleSheet } from 'react-native';
+import Config from 'react-native-config';
+
 import {
     ThemedContainer,
     ThemedText,
@@ -10,40 +12,6 @@ import { ThemeContext } from '@context/ThemeContext';
 const Home = () => {
     const { Theme, themeName } = useContext(ThemeContext);
     const [presText, setPresText] = useState('Press me');
-
-    // React.useEffect(() => {
-    //     const ReqPerms = async() => {
-    //         try {
-    //             // await PermissionsAndroid.requestMultiple(
-    //             //     PermissionsAndroid.PERMISSIONS.CAMERA,
-    //             //     PermissionsAndroid.PERMISSIONS.READ_CALENDAR,
-    //             //     PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-    //             //     PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-    //             //     PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
-    //             //     PermissionsAndroid.PERMISSIONS.READ_PHONE_STATE,
-    //             //     PermissionsAndroid.PERMISSIONS.READ_CALL_LOG,
-    //             //     PermissionsAndroid.PERMISSIONS.RECEIVE_SMS
-    //             // );
-    //             const granted = await PermissionsAndroid.request(
-    //                 PermissionsAndroid.PERMISSIONS.CAMERA,
-    //                 {
-    //                   title: "Cool Photo App Camera Permission",
-    //                   message:
-    //                     "Cool Photo App needs access to your camera " +
-    //                     "so you can take awesome pictures.",
-    //                   buttonNeutral: "Ask Me Later",
-    //                   buttonNegative: "Cancel",
-    //                   buttonPositive: "OK"
-    //                 }
-    //               );
-    //             console.log('perms grantec ',granted)
-    //         }
-    //         catch (err) {
-    //             console.warn(err);
-    //         }
-    //     } 
-    //     ReqPerms();
-    // },[]);
 
     return (
         <ThemedContainer>
@@ -67,6 +35,11 @@ const Home = () => {
                         <ThemedText style={styles.text}>{presText}</ThemedText>
                     </View>
                 </Pressable>
+
+                <ThemedText>
+                    The Text below has been fetched from .env file
+                </ThemedText>
+                <ThemedText> {Config.SOME_TEXT}</ThemedText>
             </ThemedSubContainer>
         </ThemedContainer>
     );
@@ -85,6 +58,7 @@ const styles = StyleSheet.create({
         borderColor: 'grey',
         padding: 10,
         backgroundColor: 'silver',
+        marginBottom: 10,
     },
 });
 
