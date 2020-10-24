@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 
-import PropTypes from 'prop-types';
+import { ThemedView, ThemedText } from '@styledComps/ThemedComps';
 import ContactAvatar from './ContactAvatar';
 
 const getAvatarInitials = (textString) => {
@@ -20,10 +20,10 @@ const ContactItem = (props) => {
     };
     const { item, onPress } = props;
     return (
-        <View>
+        <ThemedView>
             <TouchableOpacity onPress={() => onPress(item)}>
-                <View style={styles.itemContainer}>
-                    <View style={styles.leftElementContainer}>
+                <ThemedView style={styles.itemContainer}>
+                    <ThemedView style={styles.leftElementContainer}>
                         <ContactAvatar
                             img={
                                 item.hasThumbnail
@@ -36,17 +36,17 @@ const ContactItem = (props) => {
                             width={40}
                             height={40}
                         />
-                    </View>
-                    <View style={styles.rightSectionContainer}>
-                        <View style={styles.mainTitleContainer}>
-                            <Text
+                    </ThemedView>
+                    <ThemedView style={styles.rightSectionContainer}>
+                        <ThemedView style={styles.mainTitleContainer}>
+                            <ThemedText
                                 style={styles.titleStyle}
-                            >{`${item.givenName} ${item.familyName}`}</Text>
-                        </View>
-                    </View>
-                </View>
+                            >{`${item.givenName} ${item.familyName}`}</ThemedText>
+                        </ThemedView>
+                    </ThemedView>
+                </ThemedView>
             </TouchableOpacity>
-        </View>
+        </ThemedView>
     );
 };
 
@@ -80,8 +80,3 @@ const styles = StyleSheet.create({
 });
 
 export default memo(ContactItem);
-
-ContactItem.propTypes = {
-    item: PropTypes.object,
-    onPress: PropTypes.func,
-};

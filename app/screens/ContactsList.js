@@ -1,5 +1,5 @@
 import React from 'react';
-import { PermissionsAndroid, Platform } from 'react-native';
+import { PermissionsAndroid, Platform, SafeAreaView, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
 import Contacts from 'react-native-contacts';
 
 import {
@@ -32,8 +32,12 @@ const ContactsList = () => {
                     );
                 }
                 const res = await Contacts.getAll();
-                console.log(res[0])
                 setContacts(res)
+                
+                // cContacts.getAll((err, contacts) => {
+                //     // contacts.sort((a, b) => a.givenName.toLowerCase() > b.givenName.toLowerCase());
+                //     setContacts(contacts)
+                // })
 
             } catch (err) {
                 console.warn(err);
@@ -43,7 +47,11 @@ const ContactsList = () => {
     }, []);
 
     if(!contacts){
-        return <></>;
+        return (
+            <ThemedContainer style={styles.loadingView}>
+                <ActivityIndicator size={80} color="#00ff00" />
+            </ThemedContainer>
+        );
     }
 
     return (
@@ -51,14 +59,32 @@ const ContactsList = () => {
             <ThemedSubContainer>
                 <ThemedText>Get all your contacts</ThemedText>
             </ThemedSubContainer>
-            {
-                contacts.map(contact => 
-                    <ContactItem key={contact.recordID}
-                    item={contact} />
-                )
-            }
+            <SafeAreaView style={styles.listView}>
+                <ScrollView>
+                    {
+                        contacts.map(contact => 
+                            <ContactItem
+                                key={contact.recordID}
+                                item={contact} 
+                            />
+                        )
+                    }
+                </ScrollView>
+            </SafeAreaView>
         </ThemedContainer>
     );
 };
+
+const styles = StyleSheet.create({
+    loadingView: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    listView: {
+        paddingLeft: 30,
+        marginTop: 30
+    }
+});
 
 export default ContactsList;
