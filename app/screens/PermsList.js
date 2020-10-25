@@ -73,7 +73,7 @@ const PermsList = () => {
                     <Button
                         raised
                         primary
-                        text='Contacts'
+                        text="Contacts"
                         onPress={() => navigation.navigate('ContactsList')}
                     />
                 </ThemedView>
@@ -82,10 +82,10 @@ const PermsList = () => {
                     <Button
                         raised
                         primary
-                        text='Location'
+                        text="Location"
                         icon={
                             <Icon
-                                name='location-outline'
+                                name="location-outline"
                                 color={'crimson'}
                                 size={20}
                                 style={styles.icon}
@@ -99,16 +99,16 @@ const PermsList = () => {
                     <Button
                         raised
                         primary
-                        text='Calendar'
+                        text="Calendar"
                         icon={
                             <FontAwesomeI
-                                name='calendar'
+                                name="calendar"
                                 color={'crimson'}
                                 size={20}
                                 style={styles.icon}
                             />
                         }
-                        onPress={() => getUserLocation()}
+                        onPress={() => navigation.navigate('CalendarList')}
                     />
                 </ThemedView>
             </ThemedSubContainer>

@@ -19,8 +19,8 @@ const Profile = () => {
             <ThemedView style={styles.itemView}>
                 <ThemedView style={styles.iconView}>
                     <Icon
-                        name='palette'
-                        color='#d6bd8b'
+                        name="palette"
+                        color="#d6bd8b"
                         size={CommonStyles.icons.tabIcons}
                     />
                 </ThemedView>
@@ -31,7 +31,7 @@ const Profile = () => {
                     <Switch
                         trackColor={{ false: '#767577', true: '#7b9ab0' }}
                         thumbColor={Dark ? '#42a4eb' : '#f4f3f4'}
-                        ios_backgroundColor='#3e3e3e'
+                        ios_backgroundColor="#3e3e3e"
                         onValueChange={toggleTheme}
                         value={Dark}
                     />

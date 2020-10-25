@@ -45,7 +45,7 @@ const ContactsList = () => {
     if (!contacts) {
         return (
             <ThemedContainer style={styles.loadingView}>
-                <ActivityIndicator size={80} color='#00ff00' />
+                <ActivityIndicator size={80} color="#00ff00" />
             </ThemedContainer>
         );
     }
