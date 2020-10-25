@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, PermissionsAndroid, Platform } from 'react-native';
 import { Button } from 'react-native-material-ui';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesomeI from 'react-native-vector-icons/FontAwesome';
 import Geolocation from '@react-native-community/geolocation';
+import { Snackbar } from 'react-native-paper';
 
 import {
     ThemedContainer,
@@ -15,6 +16,8 @@ import {
 
 const PermsList = () => {
     const navigation = useNavigation();
+    const [msg,setMsg] =  useState(null);
+    const [visible, setSbVis] = useState(false);
 
     const getUserLocation = async () => {
         try {
@@ -61,6 +64,31 @@ const PermsList = () => {
         }
     };
 
+    const getContacts = async() => {
+        try {
+            if (Platform.OS === 'android') {
+                const result = await PermissionsAndroid.request(
+                    PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+                );
+                if(result === 'granted'){
+                /*  Contacts would be unsorted, we need to sort theme, getting field
+                    sizes different err, so leaving that for now. Check this link for
+                    a better implementation of the same -
+                    https://aboutreact.com/access-contact-list-react-native/
+                */
+                    navigation.navigate('ContactsList');
+                }
+                else {
+                    setMsg('Permission Denied');
+                    setSbVis(true);
+                }
+            }
+            
+        } catch (err) {
+            console.warn(err);
+        }
+    }
+
     return (
         <ThemedContainer>
             <ThemedSubContainer>
@@ -74,7 +102,7 @@ const PermsList = () => {
                         raised
                         primary
                         text="Contacts"
-                        onPress={() => navigation.navigate('ContactsList')}
+                        onPress={() => getContacts()}
                     />
                 </ThemedView>
 
@@ -112,6 +140,20 @@ const PermsList = () => {
                     />
                 </ThemedView>
             </ThemedSubContainer>
+
+            <Snackbar 
+                    visible = {visible} 
+                    onDismiss = {() => setSbVis(false) }
+                    action={{
+                        label: 'Enable',
+                        onPress: () => {
+                          console.log('ld')
+                        },
+                    }}
+                >   
+                   {msg}
+            </Snackbar>
+
         </ThemedContainer>
     );
 };

@@ -21,23 +21,9 @@ const ContactsList = () => {
 
     React.useEffect(() => {
         const ReqPerms = async () => {
-            try {
-                if (Platform.OS === 'android') {
-                    await PermissionsAndroid.request(
-                        PermissionsAndroid.PERMISSIONS.READ_CONTACTS
-                    );
-                }
-                /*  Contacts would be unsorted, we need to sort theme, getting field
-                    sizes different err, so leaving that for now. Check this link for
-                    a better implementation of the same -
-                    https://aboutreact.com/access-contact-list-react-native/
-                */
-                const res = await Contacts.getAll();
-                setContacts(res);
-                console.log(JSON.stringify(res[0]));
-            } catch (err) {
-                console.warn(err);
-            }
+            const res = await Contacts.getAll();
+            setContacts(res);
+            console.log(JSON.stringify(res[0]));
         };
         ReqPerms();
     }, []);
