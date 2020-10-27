@@ -11,36 +11,13 @@ import {
 
 const CalendarList = () => {
     useEffect(() => {
-        const checkCalenderPerms = () => {
-            check(PERMISSIONS.ANDROID.READ_CALENDAR)
-                .then((result) => {
-                    switch (result) {
-                        case RESULTS.DENIED: {
-                            request(PERMISSIONS.ANDROID.READ_CALENDAR).then(res => {
-                                if(res === 'granted'){
-                                    getCalendars();
-                                }
-                            })
-                        }
-                        break;
-                        
-                        case RESULTS.GRANTED:
-                            getCalendars();
-                        break;
-                    }
-                })
-                .catch((error) => {
-                    console.log('Calendar Permission err : ', error);
-                });
-        };
-
-        checkCalenderPerms();
+        getCalendars();
     }, []);
 
-    const getCalendars = async() => {
+    const getCalendars = async () => {
         const cals = await RNCalendarEvents.findCalendars();
-        console.log('avail cals ',cals)
-    }
+        console.log('avail cals ', cals);
+    };
 
     return (
         <ThemedContainer>
