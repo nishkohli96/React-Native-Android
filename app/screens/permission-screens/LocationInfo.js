@@ -7,6 +7,11 @@ import {
     ThemedSubContainer,
 } from '@styledComps/ThemedComps';
 
+/*
+    Refer this package for distances based upon position
+    https://github.com/manuelbieh/geolib#readme
+*/
+
 const LocationInfo = () => {
     const [currentLatitude, setLatitude] = useState(null);
     const [currentLongitude, setLongitude] = useState(null);

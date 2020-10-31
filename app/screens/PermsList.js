@@ -1,10 +1,14 @@
 import React, { useState, useCallback } from 'react';
-import { StyleSheet, Linking, Platform } from 'react-native';
+import {
+    StyleSheet,
+    Linking,
+    Platform,
+    PermissionsAndroid,
+} from 'react-native';
 import { Button } from 'react-native-material-ui';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesomeI from 'react-native-vector-icons/FontAwesome';
-import Geolocation from '@react-native-community/geolocation';
 import { Snackbar } from 'react-native-paper';
 
 import {
@@ -43,7 +47,7 @@ const PermsList = () => {
             if (Platform.OS === 'android') {
                 granted = await locationPermission();
 
-                if (granted === 'granted') {
+                if (granted === PermissionsAndroid.RESULTS.GRANTED) {
                     navigation.navigate('LocationInfo');
                 } else {
                     PermDeniedErr('Location');
@@ -63,7 +67,7 @@ const PermsList = () => {
         try {
             if (Platform.OS === 'android') {
                 const result = await contactsPermission();
-                if (result === 'granted') {
+                if (result === PermissionsAndroid.RESULTS.GRANTED) {
                     navigation.navigate('ContactsList');
                 } else {
                     PermDeniedErr('Contacts');
