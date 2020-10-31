@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-    PermissionsAndroid,
-    Platform,
     SafeAreaView,
     ScrollView,
     StyleSheet,

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions';
 import RNCalendarEvents from 'react-native-calendar-events';
 
 import {

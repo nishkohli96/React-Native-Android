@@ -9,6 +9,7 @@
             "@components": "./app/components",
             "@context": "./app/context",
             "@screens": "./app/screens",
+            "@permissionScreens": "./app/screens/permission-screens",
             "@styledComps": "./app/components/styled-components",
             "@themes": "./app/assets/themes",
             "@utils": "./app/utils"

@@ -42,33 +42,9 @@ const PermsList = () => {
             let granted = null;
             if (Platform.OS === 'android') {
                 granted = await locationPermission();
-                if (granted) {
-                    Geolocation.watchPosition(
-                        (position) => {
-                            console.log('Position Obj: ', position);
 
-                            const currentLongitude = JSON.stringify(
-                                position.coords.longitude
-                            );
-                            const currentLatitude = JSON.stringify(
-                                position.coords.latitude
-                            );
-                            console.log(
-                                'Position Coords: ( ' +
-                                    currentLatitude +
-                                    ' , ' +
-                                    currentLongitude +
-                                    ' )'
-                            );
-                        },
-                        (error) => {
-                            console.log(error.message);
-                        },
-                        {
-                            enableHighAccuracy: false,
-                            maximumAge: 1000,
-                        }
-                    );
+                if (granted === 'granted') {
+                    navigation.navigate('LocationInfo');
                 } else {
                     PermDeniedErr('Location');
                 }
@@ -105,7 +81,7 @@ const PermsList = () => {
                 if (result) {
                     navigation.navigate('CalendarList');
                 } else {
-                    PermDeniedErr('Contacts');
+                    PermDeniedErr('Calendar');
                 }
             }
         } catch (err) {
@@ -172,6 +148,7 @@ const PermsList = () => {
                     label: 'Enable',
                     onPress: () => openAppSettings(),
                 }}
+                duration={4000}
             >
                 {msg}
             </Snackbar>

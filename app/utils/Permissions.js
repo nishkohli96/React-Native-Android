@@ -1,5 +1,5 @@
 import { PermissionsAndroid } from 'react-native';
-import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
+import { request, PERMISSIONS, RESULTS } from 'react-native-permissions';
 
 export const locationPermission = async () => {
     const res = await PermissionsAndroid.request(
@@ -16,7 +16,7 @@ export const contactsPermission = async () => {
 };
 
 export const calendarPermission = async () => {
-    const res = await check(PERMISSIONS.ANDROID.READ_CALENDAR);
+    const res = await request(PERMISSIONS.ANDROID.READ_CALENDAR);
     if (res === RESULTS.GRANTED) {
         return true;
     }
