@@ -20,8 +20,27 @@ const ContactsList = () => {
     React.useEffect(() => {
         const ReqPerms = async () => {
             const res = await Contacts.getAll();
-            setContacts(res);
-            console.log(JSON.stringify(res[0]));
+
+            let newContacts = [];
+            res.map((contact) => {
+                newContacts.push({
+                    rawContactId: contact.rawContactID,
+                    recordID: contact.recordID,
+                    givenName: contact.givenName,
+                    familyName: contact.familyName,
+                    displayName: contact.displayName,
+                    //its an array, getting only the 1st phoneno
+                    phoneNumbers: contact.phoneNumbers[0],
+                    thumbnailPath: contact.thumbnailPath,
+                });
+            });
+
+            newContacts.sort((a, b) =>
+                a.displayName.toLowerCase() > b.displayName.toLowerCase()
+                    ? 1
+                    : -1
+            );
+            setContacts(newContacts);
         };
         ReqPerms();
     }, []);

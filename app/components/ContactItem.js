@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import Contacts from 'react-native-contacts';
 
 import { ThemedView, ThemedText } from '@styledComps/ThemedComps';
 import ContactAvatar from './ContactAvatar';
@@ -21,32 +22,46 @@ const getAvatarInitials = (textString) => {
 const ContactItem = (props) => {
     const { item } = props;
 
+    const OpenContact = async () => {
+        await Contacts.openExistingContact(props);
+        console.log(props);
+    };
+
     return (
-        <ThemedView>
-            <ThemedView style={styles.itemContainer}>
-                <ThemedView style={styles.leftElementContainer}>
-                    <ContactAvatar
-                        img={
-                            item.hasThumbnail
-                                ? { uri: item.thumbnailPath }
-                                : undefined
-                        }
-                        placeholder={getAvatarInitials(
-                            `${item.givenName} ${item.familyName}`
-                        )}
-                        width={40}
-                        height={40}
-                    />
-                </ThemedView>
-                <ThemedView style={styles.rightSectionContainer}>
-                    <ThemedView style={styles.mainTitleContainer}>
-                        <ThemedText
-                            style={styles.titleStyle}
-                        >{`${item.givenName} ${item.familyName}`}</ThemedText>
+        <TouchableOpacity onPress={() => OpenContact()}>
+            <ThemedView>
+                <ThemedView style={styles.itemContainer}>
+                    <ThemedView style={styles.leftElementContainer}>
+                        <ContactAvatar
+                            img={
+                                item.hasThumbnail
+                                    ? { uri: item.thumbnailPath }
+                                    : undefined
+                            }
+                            placeholder={getAvatarInitials(
+                                `${item.givenName} ${item.familyName}`
+                            )}
+                            width={40}
+                            height={40}
+                        />
+                    </ThemedView>
+                    <ThemedView style={styles.rightSectionContainer}>
+                        <ThemedView style={styles.mainTitleContainer}>
+                            <ThemedText
+                                style={styles.titleStyle}
+                            >{`${item.givenName} ${item.familyName}`}</ThemedText>
+                            {item.phoneNumbers === undefined ? (
+                                <></>
+                            ) : (
+                                <ThemedText>
+                                    ( {`${item.phoneNumbers.number}`} )
+                                </ThemedText>
+                            )}
+                        </ThemedView>
                     </ThemedView>
                 </ThemedView>
             </ThemedView>
-        </ThemedView>
+        </TouchableOpacity>
     );
 };
 
