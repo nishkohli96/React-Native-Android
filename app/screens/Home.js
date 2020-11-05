@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Pressable, StatusBar, View, StyleSheet } from 'react-native';
+import { Pressable, StatusBar, StyleSheet } from 'react-native';
 import Config from 'react-native-config';
+import { SwipeActionView } from 'react-native-action-view';
 
 import {
     ThemedContainer,
     ThemedText,
+    ThemedView,
     ThemedSubContainer,
 } from '@styledComps/ThemedComps';
 import { ThemeContext } from '@context/ThemeContext';
@@ -12,6 +14,11 @@ import { ThemeContext } from '@context/ThemeContext';
 const Home = () => {
     const { Theme, themeName } = useContext(ThemeContext);
     const [presText, setPresText] = useState('Press me');
+
+    /*
+        Issues while linking swiperView in android
+        https://github.com/wix/react-native-swipe-view
+    */
 
     return (
         <ThemedContainer>
@@ -31,15 +38,79 @@ const Home = () => {
                     onPressOut={() => setPresText('Press Me')}
                     onLongPress={() => setPresText('On Long Press...')}
                 >
-                    <View style={styles.pressView}>
+                    <ThemedView style={styles.pressView}>
                         <ThemedText style={styles.text}>{presText}</ThemedText>
-                    </View>
+                    </ThemedView>
                 </Pressable>
 
                 <ThemedText>
                     The Text below has been fetched from .env file
                 </ThemedText>
-                <ThemedText> {Config.SOME_TEXT}</ThemedText>
+                <ThemedText style={styles.configText}>
+                    " {Config.SOME_TEXT} "
+                </ThemedText>
+
+                <SwipeActionView
+                    style={styles.swiperView}
+                    rightExpansionSettings={{ buttonIndex: 0 }}
+                    leftExpansionSettings={{ buttonIndex: 0 }}
+                    rightButtons={[
+                        {
+                            title: 'Red',
+                            color: 'rgb(255, 0, 0)',
+                            callback: () => {
+                                alert('Red button tapped.');
+                            },
+                        },
+                        {
+                            title: 'Green',
+                            color: 'rgb(0, 255, 0)',
+                            callback: () => {
+                                alert('Green button tapped.');
+                            },
+                        },
+                        {
+                            title: 'Blue',
+                            color: 'rgb(0, 0, 255)',
+                            callback: () => {
+                                alert('Blue button tapped.');
+                            },
+                        },
+                    ]}
+                    leftButtons={[
+                        {
+                            title: 'Red',
+                            color: 'rgb(255, 0, 0)',
+                            callback: () => {
+                                alert('Red button tapped.');
+                            },
+                        },
+                        {
+                            title: 'Green',
+                            color: 'rgb(0, 255, 0)',
+                            callback: () => {
+                                alert('Green button tapped.');
+                            },
+                        },
+                        {
+                            title: 'Blue',
+                            color: 'rgb(0, 0, 255)',
+                            callback: () => {
+                                alert('Blue button tapped.');
+                            },
+                        },
+                    ]}
+                    leftSwipeSettings={{
+                        transition: 'rotate3d',
+                        enableSwipeBounces: true,
+                    }}
+                    rightSwipeSettings={{
+                        transition: 'clipCenter',
+                        enableSwipeBounces: false,
+                    }}
+                >
+                    <ThemedText>To get started, swipe this view.</ThemedText>
+                </SwipeActionView>
             </ThemedSubContainer>
         </ThemedContainer>
     );
@@ -53,6 +124,15 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'red',
+    },
+    configText: {
+        color: 'yellow',
+        marginTop: 10,
+        marginBottom: 10,
+    },
+    swiperView: {
+        backgroundColor: 'grey',
+        padding: 20,
     },
     pressView: {
         borderColor: 'grey',

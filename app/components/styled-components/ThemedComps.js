@@ -40,6 +40,3 @@ export const ThemedHeaderText = styled.Text`
     marginLeft: ${CommonStyles.headerComp.marginLeft};
 `;
 
-export const ThemedStatusBar = styled.StatusBar`
-    backgroundColor: ${(props) => props.theme.colors.header};
-`;
