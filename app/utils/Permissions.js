@@ -22,3 +22,27 @@ export const calendarPermission = async () => {
     }
     return false;
 };
+
+export const cameraPermission = async () => {
+    const res = await request(PERMISSIONS.ANDROID.CAMERA);
+    if (res === RESULTS.GRANTED) {
+        return true;
+    }
+    return false;
+};
+
+export const readStoragePermission = async () => {
+    const res = await request(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE);
+    if (res === RESULTS.GRANTED) {
+        return true;
+    }
+    return false;
+};
+
+export const writeStoragePermission = async () => {
+    const res = await request(PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE);
+    if (res === RESULTS.GRANTED) {
+        return true;
+    }
+    return false;
+};

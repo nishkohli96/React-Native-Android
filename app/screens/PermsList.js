@@ -7,15 +7,12 @@ import {
 } from 'react-native';
 import { Button } from 'react-native-material-ui';
 import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import IoniconsI from 'react-native-vector-icons/Ionicons';
 import FontAwesomeI from 'react-native-vector-icons/FontAwesome';
+import AntDesignI from 'react-native-vector-icons/AntDesign';
 import { Snackbar } from 'react-native-paper';
 
-import {
-    locationPermission,
-    contactsPermission,
-    calendarPermission,
-} from '@utils/Permissions';
+import * as Permissions from '@utils/Permissions';
 import {
     ThemedContainer,
     ThemedText,
@@ -45,7 +42,7 @@ const PermsList = () => {
         try {
             let granted = null;
             if (Platform.OS === 'android') {
-                granted = await locationPermission();
+                granted = await Permissions.locationPermission();
 
                 if (granted === PermissionsAndroid.RESULTS.GRANTED) {
                     navigation.navigate('LocationInfo');
@@ -58,15 +55,13 @@ const PermsList = () => {
         }
     };
 
-    /*  Contacts would be unsorted, we need to sort theme, getting field
-        sizes different err, so leaving that for now. Check this link for
-        a better implementation of the same -
+    /*  Contacts would be unsorted, we need to sort them, read more at
         https://aboutreact.com/access-contact-list-react-native/
     */
     const getContacts = async () => {
         try {
             if (Platform.OS === 'android') {
-                const result = await contactsPermission();
+                const result = await Permissions.contactsPermission();
                 if (result === PermissionsAndroid.RESULTS.GRANTED) {
                     navigation.navigate('ContactsList');
                 } else {
@@ -81,11 +76,33 @@ const PermsList = () => {
     const checkCalendars = async () => {
         try {
             if (Platform.OS === 'android') {
-                const result = await calendarPermission();
+                const result = await Permissions.calendarPermission();
                 if (result) {
                     navigation.navigate('CalendarList');
                 } else {
                     PermDeniedErr('Calendar');
+                }
+            }
+        } catch (err) {
+            console.warn(err);
+        }
+    };
+
+    const openCamera = async () => {
+        try {
+            if (Platform.OS === 'android') {
+                if (await Permissions.cameraPermission()) {
+                    if (await Permissions.readStoragePermission()) {
+                        if (await Permissions.writeStoragePermission()) {
+                            navigation.navigate('Camera');
+                        } else {
+                            PermDeniedErr('Write Storage');
+                        }
+                    } else {
+                        PermDeniedErr('Read Storage');
+                    }
+                } else {
+                    PermDeniedErr('Camera');
                 }
             }
         } catch (err) {
@@ -106,6 +123,14 @@ const PermsList = () => {
                         raised
                         primary
                         text="Contacts"
+                        icon={
+                            <AntDesignI
+                                name="contacts"
+                                color={'crimson'}
+                                size={20}
+                                style={styles.icon}
+                            />
+                        }
                         onPress={() => getContacts()}
                     />
                 </ThemedView>
@@ -116,7 +141,7 @@ const PermsList = () => {
                         primary
                         text="Location"
                         icon={
-                            <Icon
+                            <IoniconsI
                                 name="location-outline"
                                 color={'crimson'}
                                 size={20}
@@ -141,6 +166,23 @@ const PermsList = () => {
                             />
                         }
                         onPress={() => checkCalendars()}
+                    />
+                </ThemedView>
+
+                <ThemedView style={styles.btnView}>
+                    <Button
+                        raised
+                        primary
+                        text="Camera"
+                        icon={
+                            <FontAwesomeI
+                                name="camera"
+                                color={'crimson'}
+                                size={20}
+                                style={styles.icon}
+                            />
+                        }
+                        onPress={() => openCamera()}
                     />
                 </ThemedView>
             </ThemedSubContainer>

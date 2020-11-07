@@ -11,6 +11,7 @@
             "@screens": "./app/screens",
             "@permissionScreens": "./app/screens/permission-screens",
             "@styledComps": "./app/components/styled-components",
+            "@images": "./app/assets/images",
             "@themes": "./app/assets/themes",
             "@utils": "./app/utils"
           }
