@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CameraKitCameraScreen } from 'react-native-camera-kit';
-import MaterialCommunityIconsI from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIconsI from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIconsI from 'react-native-vector-icons/Ionicons';
 
 import { ThemedContainer } from '@styledComps/ThemedComps';
