@@ -1,7 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { Pressable, StatusBar, StyleSheet } from 'react-native';
+import {
+    Pressable,
+    StatusBar,
+    StyleSheet,
+    TouchableOpacity,
+} from 'react-native';
 import Config from 'react-native-config';
 import { SwipeActionView } from 'react-native-action-view';
+import Clipboard from '@react-native-community/clipboard';
 
 import {
     ThemedContainer,
@@ -14,6 +20,16 @@ import { ThemeContext } from '@context/ThemeContext';
 const Home = () => {
     const { Theme, themeName } = useContext(ThemeContext);
     const [presText, setPresText] = useState('Press me');
+    const [copiedText, setCopiedText] = useState('');
+
+    const copyToClipboard = () => {
+        Clipboard.setString('hello world');
+    };
+
+    const fetchCopiedText = async () => {
+        const text = await Clipboard.getString();
+        setCopiedText(text);
+    };
 
     /*
         Issues while linking swiperView in android
@@ -111,6 +127,15 @@ const Home = () => {
                 >
                     <ThemedText>To get started, swipe this view.</ThemedText>
                 </SwipeActionView>
+
+                <TouchableOpacity onPress={copyToClipboard}>
+                    <ThemedText>Click here to copy to Clipboard</ThemedText>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={fetchCopiedText}>
+                    <ThemedText>View copied text</ThemedText>
+                </TouchableOpacity>
+
+                <ThemedText style={styles.copiedText}>{copiedText}</ThemedText>
             </ThemedSubContainer>
         </ThemedContainer>
     );
@@ -139,6 +164,10 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: 'silver',
         marginBottom: 10,
+    },
+    copiedText: {
+        marginTop: 10,
+        color: 'red',
     },
 });
 

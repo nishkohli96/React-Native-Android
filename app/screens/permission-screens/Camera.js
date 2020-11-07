@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    Image,
-    Text,
-    View,
-    TouchableHighlight,
-} from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CameraKitCameraScreen } from 'react-native-camera-kit';
 import MaterialCommunityIconsI from 'react-native-vector-icons/MaterialCommunityIcons';
