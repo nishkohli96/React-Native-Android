@@ -15,20 +15,17 @@ import IonIconsI from 'react-native-vector-icons/Ionicons';
 import { ThemedContainer } from '@styledComps/ThemedComps';
 
 const Camera = () => {
-
     const navigation = useNavigation();
     const [captureImages, setCaptureImages] = useState([]);
 
     const onBottomButtonPressed = (event) => {
         const images = JSON.stringify(event.captureImages);
-        console.log('cptus ',images)
+        console.log('cptus ', images);
         if (event.type === 'left') {
             navigation.navigate('PermsList');
-        } 
-        else if (event.type === 'right') {
-          setCaptureImages(images);
-        } 
-        else {
+        } else if (event.type === 'right') {
+            setCaptureImages(images);
+        } else {
             console.log('OK Pressed');
         }
     };
@@ -39,41 +36,46 @@ const Camera = () => {
                 <CameraKitCameraScreen
                     // Buttons to perform action done and cancel
                     actions={{
-                        rightButtonText: 'Done',
                         leftButtonText: 'Cancel',
+                        rightButtonText: 'Done',
                     }}
                     onBottomButtonPressed={(event) =>
                         onBottomButtonPressed(event)
                     }
                     flashImages={{
                         // Flash button images
-                        on: require('../../assets/images/fiery_a.jpg')
-                        ,
+                        on: (
+                            <IonIconsI
+                                name="flash"
+                                color={'silver'}
+                                size={20}
+                            />
+                        ),
                         off: (
-                            <MaterialCommunityIconsI
-                                name='flash-off'
+                            <IonIconsI
+                                name="flash-off"
                                 color={'silver'}
                                 size={20}
                             />
                         ),
                         auto: (
                             <MaterialCommunityIconsI
-                                name='flash-auto'
+                                name="flash-auto"
                                 color={'silver'}
                                 size={20}
                             />
                         ),
                     }}
-                    cameraFlipImage={() =>
+                    cameraFlipImage={() => (
                         <IonIconsI
-                            name='camera-reverse-sharp'
+                            name="camera-reverse-sharp"
                             color={'silver'}
                             size={20}
                         />
-                    }
+                    )}
                     captureButtonImage={
                         <MaterialCommunityIconsI
-                            name='camera-iris'
+                            name="camera-iris"
                             color={'silver'}
                             size={20}
                         />
