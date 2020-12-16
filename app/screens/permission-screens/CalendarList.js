@@ -5,7 +5,7 @@ import {
     ThemedText,
     ThemedContainer,
     ThemedSubContainer,
-} from '@styledComps/ThemedComps';
+} from '@StyledComps/ThemedComps';
 
 /*
     Refer here

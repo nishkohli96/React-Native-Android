@@ -12,13 +12,13 @@ import FontAwesomeI from 'react-native-vector-icons/FontAwesome';
 import AntDesignI from 'react-native-vector-icons/AntDesign';
 import { Snackbar } from 'react-native-paper';
 
-import * as Permissions from '@utils/Permissions';
+import * as Permissions from '@Utils/Permissions';
 import {
     ThemedContainer,
     ThemedText,
     ThemedSubContainer,
     ThemedView,
-} from '@styledComps/ThemedComps';
+} from '@StyledComps/ThemedComps';
 
 const PermsList = () => {
     const navigation = useNavigation();

@@ -4,18 +4,20 @@ import {
     StatusBar,
     StyleSheet,
     TouchableOpacity,
+    Text,
 } from 'react-native';
 import Config from 'react-native-config';
 import { SwipeActionView } from 'react-native-action-view';
 import Clipboard from '@react-native-community/clipboard';
+import tailwind from 'tailwind-rn';
 
 import {
     ThemedContainer,
     ThemedText,
     ThemedView,
     ThemedSubContainer,
-} from '@styledComps/ThemedComps';
-import { ThemeContext } from '@context/ThemeContext';
+} from '@StyledComps/ThemedComps';
+import { ThemeContext } from '@Context/ThemeContext';
 
 const Home = () => {
     const { Theme, themeName } = useContext(ThemeContext);
@@ -136,6 +138,10 @@ const Home = () => {
                 </TouchableOpacity>
 
                 <ThemedText style={styles.copiedText}>{copiedText}</ThemedText>
+
+                <Text style={tailwind('text-red-700 p-2 bg-blue-300')}>
+                    styled using tailwind css
+                </Text>
             </ThemedSubContainer>
         </ThemedContainer>
     );

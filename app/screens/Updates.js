@@ -1,11 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import PermsList from '@screens/PermsList';
-import ContactsList from '@permissionScreens/ContactsList';
-import LocationInfo from '@permissionScreens/LocationInfo';
-import CalendarList from '@permissionScreens/CalendarList';
-import Camera from '@permissionScreens/Camera';
+import PermsList from '@Screens/PermsList';
+import ContactsList from '@PermissionScreens/ContactsList';
+import LocationInfo from '@PermissionScreens/LocationInfo';
+import CalendarList from '@PermissionScreens/CalendarList';
+import Camera from '@PermissionScreens/Camera';
 
 const Stack = createStackNavigator();
 

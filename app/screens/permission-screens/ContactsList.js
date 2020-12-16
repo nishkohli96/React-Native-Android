@@ -11,8 +11,8 @@ import {
     ThemedContainer,
     ThemedText,
     ThemedSubContainer,
-} from '@styledComps/ThemedComps';
-import ContactItem from '@components/ContactItem';
+} from '@StyledComps/ThemedComps';
+import ContactItem from '@Components/ContactItem';
 
 const ContactsList = () => {
     const [contacts, setContacts] = React.useState(null);

@@ -4,11 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Home from '@screens/Home';
-import Profile from '@screens/Profile';
-import Updates from '@screens/Updates';
-import { ThemeContext } from '@context/ThemeContext';
-import { CommonStyles } from '@themes/CommonStyles';
+import Home from '@Screens/Home';
+import Profile from '@Screens/Profile';
+import Updates from '@Screens/Updates';
+import { ThemeContext } from '@Context/ThemeContext';
+import { CommonStyles } from '@Themes/CommonStyles';
 
 const Tab = createMaterialBottomTabNavigator();
 

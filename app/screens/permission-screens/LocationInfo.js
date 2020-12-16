@@ -5,7 +5,7 @@ import {
     ThemedContainer,
     ThemedText,
     ThemedSubContainer,
-} from '@styledComps/ThemedComps';
+} from '@StyledComps/ThemedComps';
 
 /*
     Refer this package for distances based upon position

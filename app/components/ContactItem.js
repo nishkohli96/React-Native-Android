@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import Contacts from 'react-native-contacts';
 
-import { ThemedView, ThemedText } from '@styledComps/ThemedComps';
+import { ThemedView, ThemedText } from '@StyledComps/ThemedComps';
 import ContactAvatar from './ContactAvatar';
 
 const getAvatarInitials = (textString) => {

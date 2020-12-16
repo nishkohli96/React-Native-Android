@@ -6,9 +6,9 @@ import {
     ThemedView,
     ThemedText,
     ThemedContainer,
-} from '@styledComps/ThemedComps';
-import { CommonStyles } from '@themes/CommonStyles';
-import { ThemeContext } from '@context/ThemeContext';
+} from '@StyledComps/ThemedComps';
+import { CommonStyles } from '@Themes/CommonStyles';
+import { ThemeContext } from '@Context/ThemeContext';
 
 const Profile = () => {
     const { Dark, changeTheme } = React.useContext(ThemeContext);

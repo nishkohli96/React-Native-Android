@@ -1,6 +1,6 @@
 import React from 'react';
 import Index from './app/Index';
-import { AppThemeContext } from '@context/ThemeContext';
+import { AppThemeContext } from '@Context/ThemeContext';
 
 const App = () => {
     return (

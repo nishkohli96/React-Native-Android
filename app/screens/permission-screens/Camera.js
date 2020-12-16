@@ -5,7 +5,7 @@ import { CameraKitCameraScreen } from 'react-native-camera-kit';
 import MaterialCommunityIconsI from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIconsI from 'react-native-vector-icons/Ionicons';
 
-import { ThemedContainer } from '@styledComps/ThemedComps';
+import { ThemedContainer } from '@StyledComps/ThemedComps';
 
 const Camera = () => {
     const navigation = useNavigation();
